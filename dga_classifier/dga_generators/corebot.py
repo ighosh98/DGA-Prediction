@@ -35,5 +35,3 @@ def generate_domains(nr_domains, seed='1DBA8930', d=None, nr_b=1):
 
     return ret
 
-#import corebot
-#corebot.generate_domains("1DBA8930", 100000)

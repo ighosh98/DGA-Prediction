@@ -4,28 +4,15 @@ Code from: https://github.com/baderj/domain_generation_algorithms/tree/master/su
     generate domains according to: 
     - https://www.endgame.com/blog/malware-with-a-personal-touch.html
     - http://www.rsaconference.com/writable/presentations/file_upload/br-r01-end-to-end-analysis-of-a-domain-generating-algorithm-malware-family.pdf 
+    - https://www.virustotal.com/en/file/4ee8484b95d924fe032feb8f26a44796f37fb45eca3593ab533a06785c6da8f8/analysis/
 
     requires words1.txt, words2.txt and words3.txt
-
-    Thanks to Sandor Nemes who provided the third wordlist. It is taken
-    from this sample:
-    https://www.virustotal.com/en/file/4ee8484b95d924fe032feb8f26a44796f37fb45eca3593ab533a06785c6da8f8/analysis/
+    
 """
 import time
 from datetime import datetime
 import argparse
 import os
-
-def generate_domains(num_domains, include_tld=True):
-    time_ = time.mktime(datetime.strptime("2015-01-01 00:00:00", "%Y-%m-%d %H:%M:%S").timetuple())
-    words1 = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'suppobox_words1.txt')
-    words2 = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'suppobox_words2.txt')
-    words3 = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'suppobox_words3.txt')
-    ret = []
-    ret += _generate_domains(time_, words1, num_domains//3 + 1, include_tld=include_tld)
-    ret += _generate_domains(time_, words2, num_domains//3, include_tld=include_tld)
-    ret += _generate_domains(time_, words3, num_domains//3, include_tld=include_tld)
-    return ret
 
 def _generate_domains(time_, word_list, num_domains, include_tld=True):
     results = []
@@ -63,3 +50,15 @@ def _generate_domains(time_, word_list, num_domains, include_tld=True):
         seed += 1
 
     return results
+
+def generate_domains(num_domains, include_tld=True):
+    time_ = time.mktime(datetime.strptime("2015-01-01 00:00:00", "%Y-%m-%d %H:%M:%S").timetuple())
+    words1 = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'suppobox_words1.txt')
+    words2 = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'suppobox_words2.txt')
+    words3 = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'suppobox_words3.txt')
+    ret = []
+    ret += _generate_domains(time_, words1, num_domains//3 + 1, include_tld=include_tld)
+    ret += _generate_domains(time_, words2, num_domains//3, include_tld=include_tld)
+    ret += _generate_domains(time_, words3, num_domains//3, include_tld=include_tld)
+    return ret
+

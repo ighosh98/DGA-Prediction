@@ -1,21 +1,20 @@
 """Generates data for train/test algorithms"""
 from datetime import datetime
-from io import StringIO
-from urllib.request import urlopen
+from io import BytesIO,StringIO
+#import urllib
+from urllib import urlopen
 from zipfile import ZipFile
-
+import requests
 import pickle as pickle
 import os
 import random
 import tldextract
 import numpy as np
 
-from dga_classifier.dga_generators import banjori, corebot, cryptolocker, \
-    dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda, \
-    matsnu, suppobox, gozi
+from dga_generators import banjori, corebot, cryptolocker, dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda, matsnu, suppobox, gozi
 
 # Location of Alexa 1M
-ALEXA_1M = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
+ALEXA_1M = 'https://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
 
 # Our ourput file containg all the training data
 DATA_FILE = 'traindata.pkl'
@@ -23,9 +22,8 @@ DATA_FILE = 'traindata.pkl'
 def get_alexa(num, address=ALEXA_1M, filename='top-1m.csv'):
     """Grabs Alexa 1M"""
     url = urlopen(address)
-    zipfile = ZipFile(StringIO(url.read()))
-    return [tldextract.extract(x.split(',')[1]).domain for x in \
-            zipfile.read(filename).split()[:num]]
+    zipfile = ZipFile(BytesIO(url.read()))
+    return [tldextract.extract(x.split(',')[1]).domain for x in ((zipfile.read(filename).decode('utf-8'))).split()[:num]]
 
 def gen_malicious(num_per_dga=10000):
     """Generates num_per_dga of each DGA"""
@@ -45,7 +43,7 @@ def gen_malicious(num_per_dga=10000):
                      'albuquerque', 'sanfrancisco', 'sandiego', 'losangeles', 'newyork',
                      'atlanta', 'portland', 'seattle', 'washingtondc']
 
-    segs_size = max(1, num_per_dga/len(banjori_seeds))
+    segs_size = max(1, (num_per_dga/len(banjori_seeds)))
     for banjori_seed in banjori_seeds:
         domains += banjori.generate_domains(segs_size, banjori_seed)
         labels += ['banjori']*segs_size
@@ -141,7 +139,6 @@ def gen_data(force=False):
 def get_data(force=False):
     """Returns data and labels"""
     gen_data(force)
-
     return pickle.load(open(DATA_FILE))
 
 def get_malware_labels(labels):
@@ -157,7 +154,6 @@ def expand_labels(labels):
     and it converts them into a list of lists of 0/1 labels per
     'benign' and per each malware family
     '''
-
     # Convert labels to 0-1
     y = [0 if label == 'benign' else 1 for label in labels]
     all_Ys = [y]

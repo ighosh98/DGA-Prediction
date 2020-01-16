@@ -1,4 +1,3 @@
-"""Run experiments and create figs"""
 import itertools
 import os
 import pickle
