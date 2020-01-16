@@ -44,3 +44,5 @@ DGAs to be implemented
 3. [DGA CapsNet: 1D Application of Capsule Networks to DGA Detection](https://www.mdpi.com/2078-2489/10/5/157/htm#B31-information-10-00157)
 4. [CapsNet Implementation Keras](https://github.com/XifengGuo/CapsNet-Keras)
 5. https://github.com/baderj/domain_generation_algorithms
+6. [Deep Learning For Realtime Malware Detection (ShmooCon 2018)](https://www.youtube.com/watch?v=99hniQYB6VM) 
+7. [Derived CNN model from Keegan Hines' Snowman Model](https://github.com/keeganhines/snowman/)
