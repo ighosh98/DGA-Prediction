@@ -165,7 +165,7 @@ def create_heatmap(results):
         'dircrypt', 'kraken', 'locky', 'pykspa', 'qakbot', 
         'ramdo', 'ramnit', 'simda', 
         # dict DGAs
-        'suppobox', 'gozi', 'matsnu',
+        'suppobox', 'gozi', 'matsnu', 'nymaim2',
     ]
     
     #cmap = "YlGnBu"

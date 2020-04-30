@@ -54,7 +54,7 @@ def dga(date,include_tld=True):
     return result
 #include a tld case so as to remove tld if necessary            
             
-def generate_dga(num_domains,include_tld=True):
+def generate_domains(num_domains,include_tld=True):
         date = datetime.now()
         ret=[x for x in dga(date,include_tld)]
         return ret[:min(num_domains,len(ret))]        

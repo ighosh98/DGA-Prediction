@@ -426,7 +426,7 @@ def _generate_domain(timestamp,wordl,include_tld=True):
  return ''.join([str(wds) for wds in res])
 
 def generate_domains(num_domains, include_tld=True):
-    time_ = datetime.strptime(args.date, "%Y-%m-%d") if args.date else datetime.now()
+    time_ = datetime.now()
     time_ -= datetime.utcfromtimestamp(0)
     ret = []
     ret+=[x for x in pizd(time_.total_seconds()*1000,num_domains,include_tld)] #Feed time in the correct format

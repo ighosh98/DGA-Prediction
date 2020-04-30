@@ -12,7 +12,7 @@ import numpy as np
 
 from dga_classifier.dga_generators import banjori, corebot, cryptolocker, \
     dircrypt, kraken, lockyv2, pykspa, qakbot, ramdo, ramnit, simda, \
-    matsnu, suppobox, gozi
+    matsnu, suppobox, gozi,pizd,nymaim2
 
 # Location of Alexa 1M
 ALEXA_1M = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
@@ -120,6 +120,9 @@ def gen_malicious(num_per_dga=10000):
     # gozi
     domains += gozi.generate_domains(num_per_dga, include_tld=False)
     labels += ['gozi']*num_per_dga
+    #nymaim2
+    domains += nymaim2.generate_domains(num_per_dga, include_tld=False)
+    labels += ['nymaim2']*num_per_dga
 
     return domains, labels
 
@@ -182,6 +185,7 @@ def get_labels():
         'matsnu',
         'suppobox',
         'gozi',
+        'nymaim2',
     ]
 
 def get_losses():
@@ -201,6 +205,8 @@ def get_losses():
         'matsnu': 'binary_crossentropy',
         'suppobox': 'binary_crossentropy',
         'gozi': 'binary_crossentropy',
+        'nymaim2': 'binary_crossentropy',
+
     }
 
 def get_loss_weights():
@@ -220,6 +226,7 @@ def get_loss_weights():
         'matsnu': 0.1,
         'suppobox': 0.1,
         'gozi': 0.1,
+        'nymaim2': 0.1,
     }
 
 def y_list_to_dict(all_Ys):
