@@ -11,10 +11,10 @@ DGAs to be implemented
 	- gozi
 	- matsnu
 	- suppobox
-
-- Word-based/dictionary DGA domains for the following classical malware families: **[To be Implemented]**
 	- pizd DGA generator
 	- nymaim2 DGA generator
+	
+- Word-based/dictionary DGA domains for the following classical malware families: **[Further Work]**
 	- cryptowall
 	- unknowndropper
 	- Volatile Cedar/Explosive
