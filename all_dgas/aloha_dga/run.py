@@ -5,7 +5,6 @@ import pickle
 import matplotlib
 matplotlib.use('Agg')
 import numpy as np
-
 import dga_classifier.bigram as bigram
 import dga_classifier.lstm as lstm
 import dga_classifier.cnn as cnn

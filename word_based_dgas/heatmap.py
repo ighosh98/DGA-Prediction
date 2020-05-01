@@ -162,6 +162,7 @@ def create_heatmap(results):
         'benign', 
         # dict DGAs
         'suppobox', 'gozi', 'matsnu',
+        'pizd','nymaim2',
     ]
     
     #cmap = "YlGnBu"

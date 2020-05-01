@@ -120,9 +120,9 @@ def gen_malicious(num_per_dga=10000):
     # gozi
     domains += gozi.generate_domains(num_per_dga, include_tld=False)
     labels += ['gozi']*num_per_dga
-    #nymaim2
-    domains += nymaim2.generate_domains(num_per_dga, include_tld=False)
-    labels += ['nymaim2']*num_per_dga
+    #pizd
+    domains += pizd.generate_domains(num_per_dga, include_tld=False)
+    labels += ['pizd']*num_per_dga
 
     return domains, labels
 
@@ -185,7 +185,8 @@ def get_labels():
         'matsnu',
         'suppobox',
         'gozi',
-        'nymaim2',
+        'pizd',
+      
     ]
 
 def get_losses():
@@ -205,7 +206,7 @@ def get_losses():
         'matsnu': 'binary_crossentropy',
         'suppobox': 'binary_crossentropy',
         'gozi': 'binary_crossentropy',
-        'nymaim2': 'binary_crossentropy',
+        'pizd': 'binary_crossentropy',
 
     }
 
@@ -226,8 +227,8 @@ def get_loss_weights():
         'matsnu': 0.1,
         'suppobox': 0.1,
         'gozi': 0.1,
-        'nymaim2': 0.1,
-    }
+        'pizd': 0.1,
+          }
 
 def y_list_to_dict(all_Ys):
     return dict([(label, np.array(y)) for label, y in zip(get_labels(), all_Ys)])
