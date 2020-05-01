@@ -37,6 +37,13 @@ DGAs to be implemented
 - training splits: 76% training, 4% validation, %20 testing
 - all models were trained with a batch size of 128
 - The CNN, LSTM, and CNN+LSTM models used up to 25 epochs, while the bigram models used up to 50 epochs.
+## Environment Setup Script
+
+```
+conda create -n <ENVIRONMENT_NAME> python=2.7 scikit-learn keras tensorflow-gpu matplotlib
+source activate <ENVIRONMENT_NAME>
+pip install tldextract
+```
 
 ## References
 1. [ALOHA: Auxiliary Loss Optimization for Hypothesis Augmentation](https://arxiv.org/abs/1903.05700)
