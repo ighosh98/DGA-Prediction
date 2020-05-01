@@ -31,7 +31,8 @@ DGAs to be implemented
 - ALOHA CNN
 - ALOHA Bigram
 - ALOHA LSTM
-- ALOHA CNN+LSTM
+- ALOHA CNN+LSTM <br />
+**The other branches carry further works for word DGAs nymaim2 and pizd. They are named accordingly.**
 
 #### dga_predict  default settings:
 - training splits: 76% training, 4% validation, %20 testing
