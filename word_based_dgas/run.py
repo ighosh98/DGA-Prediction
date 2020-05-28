@@ -154,7 +154,7 @@ def create_figs(nfolds=10, force=False):
             plt.set_ylim([0.0, 1.05])
             plt.set_xlabel('False Positive Rate', fontsize=16)
             plt.set_ylabel('True Positive Rate', fontsize=16)
-            plt.set_title('ROC - Binary Classification (%s)'%(metrics_record['name'].upper(),), fontsize=20)
+            plt.set_title('ROC -Summary', fontsize=20)
             plt.legend(loc="best", fontsize=9)
             plt.tick_params(axis='both', labelsize=16)
 
