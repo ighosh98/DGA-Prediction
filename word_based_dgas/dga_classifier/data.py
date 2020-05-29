@@ -10,7 +10,7 @@ import random
 import tldextract
 import numpy as np
 
-from dga_classifier.dga_generators import matsnu, suppobox, gozi
+from dga_classifier.dga_generators import matsnu, suppobox, gozi,pykspa
 
 # Location of Alexa 1M
 ALEXA_1M = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
@@ -76,10 +76,7 @@ def gen_malicious(num_per_dga=10000):
         domains += lockyv2.generate_domains(locky_gen, config=i)
         labels += ['locky']*locky_gen
 
-    # Generate pyskpa domains
-    domains += pykspa.generate_domains(num_per_dga, datetime(2016, 1, 1))
-    labels += ['pykspa']*num_per_dga
-
+  
     # Generate qakbot
     domains += qakbot.generate_domains(num_per_dga, tlds=[])
     labels += ['qakbot']*num_per_dga
@@ -107,7 +104,10 @@ def gen_malicious(num_per_dga=10000):
                                           base=random.randint(2, 2**32))
         labels += ['simda']*segs_size
     """
-    # matsnu
+    # Generate pyskpa domains
+    domains += pykspa.generate_domains(num_per_dga, datetime(2016, 1, 1))
+    labels += ['pykspa']*num_per_dga
+  # matsnu
     domains += matsnu.generate_domains(num_per_dga, include_tld=False)
     labels += ['matsnu']*num_per_dga
 
@@ -169,6 +169,7 @@ def get_labels():
         'matsnu',
         'suppobox',
         'gozi',
+        'pykspa',
     ]
 
 def get_losses():
@@ -177,6 +178,7 @@ def get_losses():
         'matsnu': 'binary_crossentropy',
         'suppobox': 'binary_crossentropy',
         'gozi': 'binary_crossentropy',
+        'pykspa': 'binary_crossentropy',
     }
 
 def get_loss_weights():
@@ -185,6 +187,7 @@ def get_loss_weights():
         'matsnu': 0.1,
         'suppobox': 0.1,
         'gozi': 0.1,
+        'pykspa': 0.1,
     }
 
 def y_list_to_dict(all_Ys):
