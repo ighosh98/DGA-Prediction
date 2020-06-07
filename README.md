@@ -31,3 +31,5 @@ conda create -n <ENVIRONMENT_NAME> python=2.7 scikit-learn keras tensorflow-gpu 
 source activate <ENVIRONMENT_NAME>
 pip install tldextract
 ```
+### LICENSE
+[Creative Commons Zero v1.0 Universal](https://github.com/ighosh98/DGA-Prediction/blob/master/LICENSE)
