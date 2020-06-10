@@ -177,4 +177,5 @@ def create_figs(nfolds=10, force=False):
 
 
 if __name__ == "__main__":
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     create_figs(nfolds=1) # Run with 1 to make it fast

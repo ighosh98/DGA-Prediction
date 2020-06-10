@@ -1,3 +1,10 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar 16 14:20:45 2020
+
+@author: ighosh
+"""
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -102,8 +109,6 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
     else:
         threshold = im.norm(data.max())/2.
 
-    # Set default alignment to center, but allow it to be
-    # overwritten by textkw.
     kw = dict(horizontalalignment="center",
               verticalalignment="center")
     kw.update(textkw)
@@ -158,17 +163,14 @@ def get_matrix(confusion, labels, model_names):
 def create_heatmap(results):
     # These control the order in which the rows/columns are rendered
     model_names = ['bigram', 'aloha_bigram', 'cnn', 'aloha_cnn', 'lstm', 'aloha_lstm', 'cnn_lstm', 'aloha_cnn_lstm']
+    # dict DGAs
     labels = [
         'benign', 
-        # dict DGAs
         'suppobox', 'gozi', 'matsnu','pykspa',
     ]
     
-    #cmap = "YlGnBu"
-    #cmap = "viridis"
     cmap = "YlOrRd"
-    #cmap = 'Blues'
-
+    
     confusion = get_confusion(0.5, results)
     matrix = np.array(get_matrix(confusion, labels, model_names))
 
