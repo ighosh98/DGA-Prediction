@@ -17,11 +17,9 @@ from dga_classifier.dga_generators import banjori, corebot, cryptolocker, \
 # Location of Alexa 1M
 ALEXA_1M = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
 
-# Our ourput file containg all the training data
 DATA_FILE = 'traindata.pkl'
 
 def get_alexa(num, address=ALEXA_1M, filename='top-1m.csv'):
-    """Grabs Alexa 1M"""
     url = urlopen(address)
     zipfile = ZipFile(StringIO(url.read()))
     return [tldextract.extract(x.split(',')[1]).domain for x in \
@@ -157,8 +155,6 @@ def expand_labels(labels):
     and it converts them into a list of lists of 0/1 labels per
     'benign' and per each malware family
     '''
-
-    # Convert labels to 0-1
     y = [0 if label == 'benign' else 1 for label in labels]
     all_Ys = [y]
     for malw_label in get_malware_labels(labels):
