@@ -24,7 +24,6 @@ def run_experiments(nfolds=10):
 
     options = {
         'nfolds': nfolds,
-        # enable for quick functional testing
         # 'max_epoch':2
     }
 
