@@ -20,4 +20,7 @@ source activate <ENVIRONMENT_NAME>
 pip install tldextract
 ```
 ### LICENSE
-[Creative Commons Zero v1.0 Universal](https://github.com/ighosh98/DGA-Prediction/blob/master/LICENSE)
+[GNU General Public License v2.0](https://github.com/ighosh98/DGA-Prediction/blob/master/LICENSE)
+
+## Acknowledgements
+Code is inspired from [aloha_dcga](https://github.com/covert-labs/aloha_dga)
